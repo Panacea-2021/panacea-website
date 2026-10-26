@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #07133a;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: auto;
+  overflow-anchor: none;
+}
+
+@keyframes blinkFast {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.blink-fast {
+  animation: blinkFast 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* app/globals.css */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 12s ease-in-out infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+
+/* ================================================================
+   PANACEA CORPORATE VISUAL REFRESH
+   Visual-only layer inspired by Persistent's restrained enterprise
+   design language: clean geometry, strong whitespace, editorial
+   typography, restrained blue accents and purposeful motion.
+   No copy, sections, assets or business logic are changed here.
+   ================================================================ */
+:root {
+  --corp-navy: #071b36;
+  --corp-blue: #0b63ce;
+  --corp-blue-dark: #084b9f;
+  --corp-cyan: #16a6d9;
+  --corp-ink: #122033;
+  --corp-muted: #5d6b7d;
+  --corp-line: #dce4ec;
+  --corp-surface: #f6f8fb;
+  --corp-white: #ffffff;
+}
+
+body {
+  background: var(--corp-white);
+  color: var(--corp-ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Enterprise rhythm: crisp section boundaries instead of a continuous
+   neon/cosmic canvas. Existing section-specific backgrounds remain intact. */
+main > section {
+  position: relative;
+}
+
+main > section:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(10, 74, 145, .12), transparent);
+  pointer-events: none;
+}
+
+/* Keep interactive controls crisp and corporate. */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(11, 99, 206, .18);
+  color: var(--corp-navy);
+}

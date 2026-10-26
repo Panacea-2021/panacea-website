@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #050b18;
+  /* Must NOT be 100vh — leave the next section visible. */
+  height: 80vh;
+  height: 80dvh;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 82vh;
+    height: 82dvh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 84vh;
+    height: 84dvh;
+  }
+}
+
+@media (max-height: 700px) {
+  .hero {
+    height: 78vh;
+    height: 78dvh;
+  }
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  object-fit: cover;
+  object-position: center 28%;
+  background: #050b18;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2.75rem;
+  pointer-events: none;
+  background: linear-gradient(to top, #050b18 0%, transparent 78%);
+}
+
+.ctaWrap {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  z-index: 2;
+  transform: translateX(-50%);
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .ctaWrap {
+    bottom: 1.75rem;
+  }
+}
+
+/* Corporate hero treatment: keep the supplied video, but make the message/CTA
+   feel like an enterprise website rather than a promotional landing page. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(3, 15, 31, .56) 0%, rgba(3, 15, 31, .18) 48%, rgba(3, 15, 31, .12) 100%),
+    linear-gradient(180deg, rgba(3, 15, 31, .16) 0%, transparent 55%, rgba(3, 15, 31, .58) 100%);
+}
+
+.overlay {
+  background: rgba(2, 13, 28, .12);
+}
+
+.ctaWrap {
+  bottom: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.ctaWrap a {
+  border: 1px solid rgba(255, 255, 255, .55);
+  background: #0b63ce !important;
+  box-shadow: 0 14px 34px rgba(3, 25, 60, .28) !important;
+  border-radius: 4px !important;
+  letter-spacing: .01em;
+  min-height: 48px;
+}
+
+.ctaWrap a:hover {
+  background: #084b9f !important;
+  transform: translateY(-2px);
+}
+
+.fade {
+  height: 5rem;
+  background: linear-gradient(to top, #071b36 0%, rgba(7, 27, 54, .6) 38%, transparent 100%);
+}

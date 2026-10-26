@@ -1,0 +1,459 @@
+.cluster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+}
+
+.glowOrb {
+  position: absolute;
+  left: 52%;
+  top: 48%;
+  width: min(78%, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(42px);
+  opacity: 0.48;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.heroWrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(78%, 390px);
+  aspect-ratio: 4 / 3;
+  transform: translate(-50%, -52%);
+  z-index: 2;
+}
+
+.heroFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.32);
+  outline: 1px solid rgba(255, 255, 255, 0.22);
+  transform-origin: center center;
+  transform: scale(0.96);
+  transition: transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activeMedia .heroFrame {
+  transform: scale(1);
+}
+
+.hovered .heroFrame {
+  transform: scale(1.03);
+}
+
+.supportWrap,
+.detailWrap,
+.deviceWrap {
+  transition:
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.idleMedia .supportWrap,
+.idleMedia .detailWrap,
+.idleMedia .deviceWrap {
+  opacity: 0.45;
+  transform: translate3d(0, 14px, 0);
+}
+
+.activeMedia .supportWrap,
+.activeMedia .detailWrap,
+.activeMedia .deviceWrap {
+  opacity: 1;
+}
+
+.hovered .floatY,
+.hovered .floatYSlow,
+.hovered .drift,
+.hovered .kenBurns {
+  animation-play-state: paused;
+}
+
+.hovered .supportWrap {
+  transform: translate3d(-6px, -8px, 0);
+}
+
+.hovered .detailWrap {
+  transform: translate3d(7px, -6px, 0);
+}
+
+.hovered .deviceWrap {
+  transform: translate3d(8px, 6px, 0);
+}
+
+.hovered .glowOrb {
+  opacity: 0.7;
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.supportWrap {
+  position: absolute;
+  left: 11%;
+  bottom: 7%;
+  width: min(42%, 180px);
+  aspect-ratio: 4 / 5;
+  z-index: 4;
+}
+
+.supportFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.95rem;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  outline: 1px solid rgba(255, 255, 255, 0.28);
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detailWrap {
+  position: absolute;
+  right: 11%;
+  top: 24%;
+  width: min(36%, 190px);
+  aspect-ratio: 4 / 3;
+  z-index: 5;
+}
+
+.detailFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.95rem;
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.deviceWrap {
+  position: absolute;
+  right: 4%;
+  bottom: 8%;
+  width: min(46%, 196px);
+  z-index: 7;
+}
+
+.waveTrack {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  animation: ps-wave 28s linear infinite;
+}
+
+.waveTrackReverse {
+  animation-direction: reverse;
+  animation-duration: 36s;
+  opacity: 0.7;
+}
+
+.floatY {
+  animation: ps-float-y 7.5s ease-in-out infinite;
+}
+
+.floatYSlow {
+  animation: ps-float-y 11s ease-in-out infinite;
+}
+
+.floatX {
+  animation: ps-float-x 9s ease-in-out infinite;
+}
+
+.drift {
+  animation: ps-drift 12s ease-in-out infinite;
+}
+
+.tiltSoft {
+  animation: ps-tilt 10s ease-in-out infinite;
+}
+
+.bell {
+  transform-origin: 50% 8%;
+  animation: ps-bell 5.2s ease-in-out infinite;
+}
+
+.pulseSoft {
+  animation: ps-pulse 3.6s ease-in-out infinite;
+}
+
+.ticker {
+  display: flex;
+  width: max-content;
+  animation: ps-ticker 18s linear infinite;
+}
+
+.drawLine {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: ps-draw 3.4s ease-out forwards infinite;
+  animation-delay: 0.4s;
+}
+
+.swatch {
+  animation: ps-swatch 7s ease-in-out infinite;
+}
+
+.gridShift {
+  animation: ps-grid 24s linear infinite;
+}
+
+.kenBurns {
+  animation: ps-ken 22s ease-in-out infinite alternate;
+}
+
+.lightSweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 62%
+  );
+  animation: ps-sweep 10s ease-in-out infinite;
+}
+
+.scanLine {
+  animation: ps-scan 5.5s ease-in-out infinite;
+}
+
+.paused,
+.paused * {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 767px) {
+  .supportWrap {
+    width: min(36%, 120px);
+    left: 11%;
+    bottom: 8%;
+  }
+
+  .detailWrap {
+    width: min(34%, 132px);
+    right: 11%;
+    top: 24%;
+  }
+
+  .deviceWrap {
+    width: min(44%, 148px);
+    right: 5%;
+    bottom: 8%;
+  }
+
+  .heroWrap {
+    width: min(82%, 320px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waveTrack,
+  .waveTrackReverse,
+  .floatY,
+  .floatYSlow,
+  .floatX,
+  .drift,
+  .tiltSoft,
+  .bell,
+  .pulseSoft,
+  .ticker,
+  .drawLine,
+  .swatch,
+  .gridShift,
+  .kenBurns,
+  .lightSweep::after,
+  .scanLine,
+  .heroFrame,
+  .heroImg,
+  .supportFrame,
+  .detailFrame,
+  .deviceWrap,
+  .glowOrb,
+  .activeMedia .heroFrame,
+  .idleMedia .heroFrame {
+    animation: none !important;
+    transition: none !important;
+    transform: none;
+  }
+
+  .hovered .heroFrame,
+  .hovered .supportWrap,
+  .hovered .detailWrap,
+  .hovered .deviceWrap {
+    transform: none;
+  }
+}
+
+@keyframes ps-wave {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ps-float-y {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes ps-float-x {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes ps-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.4deg);
+  }
+  50% {
+    transform: translate3d(-8px, -6px, 0) rotate(1.2deg);
+  }
+}
+
+@keyframes ps-tilt {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+@keyframes ps-bell {
+  0%,
+  16%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(13deg);
+  }
+  24% {
+    transform: rotate(-10deg);
+  }
+  28% {
+    transform: rotate(6deg);
+  }
+  32% {
+    transform: rotate(-2.5deg);
+  }
+  36% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ps-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes ps-ticker {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ps-draw {
+  0% {
+    stroke-dashoffset: 180;
+  }
+  55% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ps-swatch {
+  0%,
+  100% {
+    background-color: #fb923c;
+  }
+  33% {
+    background-color: #38bdf8;
+  }
+  66% {
+    background-color: #c084fc;
+  }
+}
+
+@keyframes ps-grid {
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+@keyframes ps-ken {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1.4%, -0.8%, 0);
+  }
+}
+
+@keyframes ps-sweep {
+  0%,
+  100% {
+    transform: translate3d(-40%, 0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    transform: translate3d(40%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes ps-scan {
+  0%,
+  100% {
+    transform: translate3d(0, -120%, 0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(0, 220%, 0);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,368 @@
+.productsHero {
+  isolation: isolate;
+}
+
+.heroMotion {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heroMotion::before {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: min(72vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  content: "";
+  background: radial-gradient(circle, rgb(14 165 233 / 24%), rgb(59 130 246 / 11%) 38%, transparent 70%);
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  animation: heroGlow 9s ease-in-out infinite alternate;
+}
+
+.heroMotion::after,
+.heroMotion span {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: min(88vw, 1040px);
+  height: min(34vw, 390px);
+  border: 1px solid rgb(125 211 252 / 30%);
+  border-radius: 50%;
+  content: "";
+  transform: translate(-50%, -50%) rotate(-16deg);
+  box-shadow: 0 0 24px rgb(56 189 248 / 12%), inset 0 0 22px rgb(129 140 248 / 8%);
+  animation: heroOrbit 28s linear infinite;
+}
+
+.heroMotion::after {
+  width: min(72vw, 820px);
+  height: min(46vw, 490px);
+  border-color: rgb(129 140 248 / 24%);
+  transform: translate(-50%, -50%) rotate(24deg);
+  animation-direction: reverse;
+  animation-duration: 36s;
+}
+
+.heroMotion span::after {
+  position: absolute;
+  top: 8%;
+  left: 22%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  content: "";
+  background: #67e8f9;
+  box-shadow: 0 0 18px 5px rgb(34 211 238 / 58%);
+}
+
+@keyframes heroOrbit {
+  to {
+    transform: translate(-50%, -50%) rotate(344deg);
+  }
+}
+
+@keyframes heroGlow {
+  from {
+    opacity: 0.55;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    scale: 1.06;
+  }
+}
+
+.processSection {
+  isolation: isolate;
+}
+
+.serviceCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.serviceCardTint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease;
+}
+
+.serviceCardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.industriesSection {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.industriesSection::before,
+.industriesSection::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.industriesSection::before {
+  opacity: 0.56;
+  background:
+    radial-gradient(ellipse at 8% 24%, rgb(59 130 246 / 19%), transparent 42%),
+    radial-gradient(ellipse at 90% 72%, rgb(168 85 247 / 16%), transparent 44%),
+    radial-gradient(ellipse at 50% 48%, rgb(34 211 238 / 13%), transparent 48%);
+  background-size: 155% 155%, 165% 165%, 145% 145%;
+  animation: industriesAurora 14s ease-in-out infinite alternate;
+}
+
+.industriesSection::after {
+  inset: -35% -55%;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(
+      112deg,
+      transparent 34%,
+      rgb(56 189 248 / 0%) 42%,
+      rgb(56 189 248 / 20%) 49%,
+      rgb(129 140 248 / 16%) 52%,
+      rgb(34 211 238 / 0%) 61%,
+      transparent 70%
+    );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  filter: blur(24px);
+  animation: industriesLightSweep 12s ease-in-out infinite;
+}
+
+.industriesSection > div {
+  position: relative;
+  z-index: 1;
+}
+
+.industryCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: rgb(248 250 252 / 82%);
+}
+
+.industryCard::before,
+.industryCard::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.industryCard::before {
+  opacity: 0.68;
+  background:
+    radial-gradient(ellipse at 12% 18%, rgb(59 130 246 / 17%), transparent 55%),
+    radial-gradient(ellipse at 88% 82%, rgb(168 85 247 / 13%), transparent 56%),
+    radial-gradient(ellipse at 54% 48%, rgb(34 211 238 / 10%), transparent 58%);
+  background-size: 155% 155%, 165% 165%, 145% 145%;
+  animation: industryCardAurora 13s ease-in-out infinite alternate;
+}
+
+.industryCard::after {
+  inset: -25% -65%;
+  opacity: 0;
+  background: linear-gradient(
+    112deg,
+    transparent 38%,
+    rgb(56 189 248 / 0%) 44%,
+    rgb(56 189 248 / 17%) 50%,
+    rgb(129 140 248 / 13%) 54%,
+    rgb(34 211 238 / 0%) 62%,
+    transparent 70%
+  );
+  background-size: 220% 100%;
+  background-position: -45% 50%;
+  filter: blur(12px);
+  animation: industryCardLightSweep 10s ease-in-out infinite;
+}
+
+.industryCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes industryCardAurora {
+  0% {
+    background-position: 0% 18%, 100% 82%, 48% 40%;
+  }
+  50% {
+    background-position: 42% 70%, 52% 24%, 88% 74%;
+  }
+  100% {
+    background-position: 100% 36%, 0% 58%, 16% 28%;
+  }
+}
+
+@keyframes industryCardLightSweep {
+  0%,
+  18% {
+    background-position: -45% 50%;
+    opacity: 0;
+  }
+  32%,
+  66% {
+    opacity: 0.9;
+  }
+  82%,
+  100% {
+    background-position: 145% 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes industriesAurora {
+  0% {
+    background-position: 0% 18%, 100% 82%, 48% 40%;
+  }
+  50% {
+    background-position: 42% 70%, 52% 24%, 88% 74%;
+  }
+  100% {
+    background-position: 100% 36%, 0% 58%, 16% 28%;
+  }
+}
+
+@keyframes industriesLightSweep {
+  0%,
+  12% {
+    background-position: -45% 50%;
+    opacity: 0;
+  }
+  26%,
+  72% {
+    opacity: 1;
+  }
+  88%,
+  100% {
+    background-position: 145% 50%;
+    opacity: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .serviceCard:hover .serviceCardTint {
+    opacity: 1;
+  }
+}
+
+.processSection::before,
+.processSection::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.processSection::before {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 7% 54%, rgb(59 130 246 / 16%) 0, transparent 20%),
+    radial-gradient(circle at 94% 42%, rgb(34 211 238 / 15%) 0, transparent 22%),
+    radial-gradient(circle at 50% 92%, rgb(129 140 248 / 12%) 0, transparent 30%);
+  animation: processGlowDrift 18s ease-in-out infinite alternate;
+}
+
+.processSection::after {
+  inset: 34% 3% auto;
+  height: 32%;
+  opacity: 1;
+  background-image:
+    radial-gradient(circle, #0284c7 0 3.5px, rgb(56 189 248 / 65%) 4px, transparent 5.5px),
+    radial-gradient(circle, #4f46e5 0 3px, rgb(129 140 248 / 55%) 3.5px, transparent 5px),
+    linear-gradient(90deg, transparent, rgb(56 189 248 / 58%), rgb(129 140 248 / 48%), transparent);
+  background-repeat: repeat-x, repeat-x, no-repeat;
+  background-size: 180px 100%, 240px 100%, 200% 4px;
+  background-position: 0 50%, 90px 28%, 0 50%;
+  mask-image: linear-gradient(180deg, transparent, #000 35%, #000 65%, transparent);
+  animation: processFlow 10s linear infinite;
+  filter: drop-shadow(0 0 7px rgb(56 189 248 / 65%));
+}
+
+.processConnector {
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #bfdbfe, #93c5fd, #bfdbfe);
+  box-shadow: 0 0 8px rgb(59 130 246 / 26%);
+}
+
+.processConnector::after {
+  position: absolute;
+  inset: -1px auto -1px 0;
+  width: 18%;
+  border-radius: inherit;
+  content: "";
+  background: linear-gradient(90deg, transparent, #0ea5e9 35%, #6366f1 68%, transparent);
+  box-shadow: 0 0 10px 2px rgb(56 189 248 / 55%);
+  animation: processConnectorPulse 3s ease-in-out infinite;
+}
+
+@keyframes processGlowDrift {
+  from {
+    background-position: 0% 50%, 100% 50%, 50% 100%;
+  }
+  to {
+    background-position: 14% 42%, 86% 58%, 50% 72%;
+  }
+}
+
+@keyframes processFlow {
+  to {
+    background-position: 180px 50%, 330px 28%, 200% 50%;
+  }
+}
+
+@keyframes processConnectorPulse {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0.35;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(560%);
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroMotion::before,
+  .heroMotion::after,
+  .heroMotion span {
+    animation: none;
+  }
+
+  .serviceCardTint {
+    transition: none;
+  }
+
+  .industriesSection::before,
+  .industriesSection::after,
+  .industryCard::before,
+  .industryCard::after,
+  .processSection::before,
+  .processSection::after,
+  .processConnector::after {
+    animation: none;
+  }
+}
